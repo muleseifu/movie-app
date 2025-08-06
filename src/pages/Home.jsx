@@ -37,11 +37,30 @@ function Home() {
 
     // Function to handle search submission
 
-        const handleSearchSubmit = (e) => {
-            e.preventDefault(); // Prevent the default form submission behavior, which would refresh the page.
-            alert(`Searching for: ${searchQuery}`);
-        
-        }
+        const handleSearchSubmit = async (e) => {
+            e.preventDefault(); 
+            // Prevent the default form submission behavior, which would refresh the page.
+            if (searchQuery.trim() === "") {
+                setMovies([]); // Clear movies if search query is empty
+                return;
+            }
+            if (loading){
+                return
+            }
+            setLoading(true);
+
+            try{
+                const searchResults = await searchMovies(searchQuery);
+                setMovies(searchResults);
+                setError(null); // Clear any previous errors
+
+            } catch (error) {
+                setError("Failed to search movies.");
+                console.error(error);
+            } finally{
+                setLoading(false);
+            }
+        };
 
 
 
