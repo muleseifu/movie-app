@@ -1,6 +1,7 @@
 import MovieCard from "../components/movie-card.jsx";
 import { useState } from "react";
 import "../css/Home.css";
+import { getPopularMovies, searchMovies } from "../services/api.js";    
 
 function Home() {
     //This is useful for managing the state of the search query, and using onChange inside the input field to update the state as the user types.
