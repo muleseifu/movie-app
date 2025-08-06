@@ -54,14 +54,19 @@ function Home() {
             
             <button type="submit" className="search-button">Search</button> 
         </form>
-      <div className="movies-grid"> 
+
+        {error && <div className="error-message">{error}</div>}
+
+        {loading ? <div>Loading movies...</div> : 
+        <div className="movies-grid"> 
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
           
           
           //key is essential for React to identify which items have changed, are added, or are removed even if we did not use it in the previous code.
         ))}
-      </div>
+      </div>}
+      
     </div>
   );
 }
