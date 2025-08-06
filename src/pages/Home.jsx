@@ -11,8 +11,7 @@ function Home() {
 
     //used for real time search functionality, allowing the user to type in a search term and see results immediately.
     
-    const [searchQuery, setSearchQuery] = useState("");
-    
+    const [searchQuery, setSearchQuery] = useState(""); 
     const [movies, setMovies] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
