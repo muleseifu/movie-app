@@ -1,5 +1,5 @@
 import MovieCard from "../components/movie-card.jsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../css/Home.css";
 import { getPopularMovies, searchMovies } from "../services/api.js";    
 
@@ -13,13 +13,27 @@ function Home() {
     
     const [searchQuery, setSearchQuery] = useState("");
     
-    const movies = [
-        { id: 1, Title: "Inception", Year: "2010", Poster: "https://example.com/inception.jpg" },
-        { id: 2, Title: "The Matrix", Year: "1999", Poster: "https://  example.com/matrix.jpg" },
-        { id: 3, Title: "Interstellar", Year: "2014", Poster: "https://example.com/interstellar.jpg" }, 
-        { id: 4, Title: "The Dark Knight", Year: "2008", Poster: "https://example.com/darkknight.jpg" }, 
-        { id: 5, Title: "Pulp Fiction", Year: "1994", Poster: "https://example.com/pulpfiction.jpg" }, 
-        { id: 6, Title: "Forrest Gump", Year: "1994", Poster: "https://example.com/forrestgump.jpg" }]
+    const [movies, setMovies] = useState([]);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const LoadPopularMovies = async () => {
+            try {
+                const popularMovies = await getPopularMovies();
+                setMovies(popularMovies);
+            } catch (error) {
+                setError("Failed to load movies.");
+                console.error(error);
+                
+            } finally {
+                setLoading(false);
+            }
+        }
+        LoadPopularMovies();
+    }, [])
+
+
 
     // Function to handle search submission
 
