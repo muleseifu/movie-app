@@ -40,7 +40,6 @@ function Home() {
         </form>
       <div class name="movie-grid"> 
         {movies.map((movie) => (
-            movie.Title.toLowerCase().startsWith(searchQuery.toLowerCase()) && // Filter movies based on search query
           <MovieCard key={movie.id} movie={movie} />
           
           
