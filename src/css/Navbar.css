@@ -33,11 +33,16 @@
   font-size: 1rem;
   padding: 0.5rem 1rem;
   border-radius: 4px;
+  color: #007BFF;
+  
   transition: background-color 0.2s;
+  transition: transform 0.3s ease;
 }
 
 .nav-link:hover {
   background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+  color: rgb(165, 162, 255);
 }
 
 @media (max-width: 768px) {
@@ -56,4 +61,24 @@
   .nav-link {
     padding: 0.5rem;
   }
+}
+
+
+
+
+
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #007BFF;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
 }
