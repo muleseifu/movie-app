@@ -82,3 +82,24 @@
 .nav-link:hover::after {
   width: 100%;
 }
+
+
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.navbar-brand {
+    animation: pulse 2s infinite alternate; /* Apply a continuous pulsing animation */
+
+}
+
+.navbar-text {
+  color: #007BFF;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
