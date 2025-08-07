@@ -1,5 +1,5 @@
 import "../css/MovieCard.css";
-import { useMovieContext } from "../contexts/MovieContext";
+import { useMovieContext } from "../contexts/MovieContext.jsx";
 
 
 function MovieCard({movie}) {
@@ -19,7 +19,9 @@ function MovieCard({movie}) {
             </div>
             <div className="movie-overlay">
                 <button className={`favorite-btn ${favorite ? "active" : ""}`} onClick={onFavoriteClick}> 
-                ♥
+                ♥ {
+
+                }
                 </button>
             </div>
             <div className="movie-info">
